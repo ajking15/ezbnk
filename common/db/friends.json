@@ -1,0 +1,44 @@
+{
+    "u123": {
+        "name": "Robert Baratheon",
+        "src": "https://static.hbo.com/content/dam/hbodata/series/game-of-thrones/character/s5/robert-baratheon-1920.jpg",
+        "uid": "u123",
+        "borrowScore": 9.3,
+        "lendScore": 9.3
+    },
+    "u234": {
+        "name": "Tyrion Lannister",
+        "src": "https://static.hbo.com/content/dam/hbodata/series/game-of-thrones/character/s5/tyrion-lannister-1920.jpg",
+        "uid": "u234",
+        "borrowScore": 9.3,
+        "lendScore": 3.6
+    },
+    "u345": {
+        "name": "Daenerys Targaryen",
+        "src": "https://static.hbo.com/content/dam/hbodata/series/game-of-thrones/character/s5/daenarys-1920.jpg",
+        "uid": "u345",
+        "borrowScore": 9.3,
+        "lendScore": 4.7
+    },
+    "u456": {
+        "name": "Catelyn Stark",
+        "src": "https://upload.wikimedia.org/wikipedia/en/3/3c/Michelle_Fairley_Cat_Stark_in_the_Vale.png",
+        "uid": "u456",
+        "borrowScore": 9.3,
+        "lendScore": 8.3
+    },
+    "u567": {
+        "name": "Arya Stark",
+        "src": "https://static.hbo.com/content/dam/hbodata/series/game-of-thrones/character/s5/arya-stark-1920.jpg",
+        "uid": "u567",
+        "borrowScore": 9.3,
+        "lendScore": 9.4
+    },
+    "u363": {
+        "name": "Rickon Stark",
+        "src": "https://static.hbo.com/content/dam/hbodata/series/game-of-thrones/character/s5/rickon-stark-1920.jpg",
+        "uid": "u363",
+        "borrowScore": 9.3,
+        "lendScore": 3.8
+    }
+}

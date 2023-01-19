@@ -1,0 +1,45 @@
+{
+    "intervals": [
+        {
+            "key": "day",
+            "title": "Daily"
+        },
+        {
+            "key": "week",
+            "title": "Weekly"
+        },
+        {
+            "key": "mon",
+            "title": "Monthly"
+        },
+        {
+            "key": "year",
+            "title": "Anually"
+        },
+        {
+            "key": "nvm",
+            "title": "Never"
+        }
+    ],
+
+    "shareType": {
+        "equally": {
+            "label": "Equally",
+            "key":  "equally",
+            "description": "Divides the amount eaqually",
+            "icon": ""
+        },
+        "exact":{
+            "label": "Exact Amount",
+            "key":  "exact",
+            "description": "The exact value owed by per person",
+            "icon": ""
+        },
+        "percent":{
+            "label": "Percentages",
+            "key":  "percent",
+            "description": "Split percentage per person (needs to add up to 100%)",
+            "icon": ""
+        }
+    }
+}
