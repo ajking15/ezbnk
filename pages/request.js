@@ -1,70 +1,76 @@
-import { Button, Card, Dropdown, Input, Modal, Spacer, Text } from "@nextui-org/react";
-import { useState } from "react";
+import {
+  Button,
+  Card,
+  Checkbox,
+  Divider,
+  Dropdown,
+  Grid,
+  Input,
+  Modal,
+  Spacer,
+  Switch,
+  Text,
+  Textarea,
+  Tooltip,
+  User,
+} from "@nextui-org/react";
+import { useEffect, useState } from "react";
+import { Calendar, Download, Send, Upload } from "react-iconly";
 import Navybar from "../common/components/navbar";
+import { RequestModal } from "../common/components/modals/requestModal";
+import { ReviewModal } from "../common/components/modals/reviewModal";
+import { RequestCard } from "../common/components/cards/requestCard";
 
 const Request = () => {
-  const [toggle, setToggle] = useState(false);
-  const requestCards = (numCards) => {
+  const [toggleRequest, setToggleRequest] = useState(false);
+  const [toggleRequestAccept, setToggleRequestAccept] = useState(false);
+  //
+  const [selectRequested, setRequested] = useState({});
+  const userInfo = require("../common/db/user.json");
+  // Updated //
+  const [updateRequest, setUpdateRequest] = useState(false);
+  const reviewCards = (requests) => {
     const cards = [];
-    for(var i = 0; i< numCards; i++){
-        cards.push(<><Card css={{w: '10%'}}>
-        <Card.Body>
-            <Text>Request From: </Text>
-            <Text>Requested Amount: </Text>
-        </Card.Body>
-        <Card.Footer>
-            <Button auto color={'success'}>Accept</Button>
-        </Card.Footer>
-      </Card><Spacer /></>);
-    }
+    requests.map((data, i) => {
+      cards.push(<>
+        <RequestCard type={typeof data.to == 'undefined' ? 'Recieved' : 'Sent' } data={data} key={i} toggle={toggleRequestAccept} setToggle={setToggleRequestAccept} setData={setRequested} />
+        <Spacer /></>
+      );
+    });
     return cards;
-  }
+  };
   return (
     <>
-      <Navybar location="request" />
       <div style={{ marginLeft: "16%", marginTop: "3%" }}>
         {" "}
         <Button
           onClick={() => {
-            setToggle(!toggle);
+            setToggleRequest(!toggleRequest);
           }}
         >
           Request Friend
         </Button>
-        <Modal
-          open={toggle}
-          onClose={() => {
-            setToggle(!toggle);
-          }}
-        >
-          <Modal.Header>
-            <Text>Request Friend</Text>
-          </Modal.Header>
-          <Modal.Body css={{ display: "flex", flexDirection: "column" }}>
-            <Dropdown>
-              <Dropdown.Button flat>Friends</Dropdown.Button>
-              <Dropdown.Menu aria-label="Static Actions">
-                <Dropdown.Item key="new">Rob Stark</Dropdown.Item>
-                <Dropdown.Item key="copy">Tirian Lanister</Dropdown.Item>
-                <Dropdown.Item key="edit">Sansa Stark</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Input
-              type={"number"}
-              labelLeft="$"
-              label="Request amount"
-            />
-            <Input
-              type={"number"}
-              labelLeft="%"
-              label="Interest Rate"
-            />
-          </Modal.Body>
-        </Modal>
-        <div style={{marginTop: '2%', display: 'flex', flexDirection: 'row'}}>{requestCards(8)}</div>
-       
+        <RequestModal toggle={toggleRequest} setToggle={setToggleRequest} requestMode="lend"/>
+        <ReviewModal toggle={toggleRequestAccept} setToggle={setToggleRequestAccept} data={selectRequested} />
+        <Spacer />
+        <Text h2>Loan</Text>
+        <Divider style={{ width: "80%" }} />
+        <div style={{ marginTop: "2%", display: "flex", flexDirection: "row" }}>
+          {reviewCards(userInfo.request.lend)}
+        </div>
+        <Spacer />
+        <Text h2>Transfer</Text>
+        <Divider style={{ width: "80%" }} />
+        <div style={{ marginTop: "2%", display: "flex", flexDirection: "row" }}>
+          {reviewCards(userInfo.request.transfer)}
+        </div>
+        <Spacer />
+        <Text h2>Sent</Text>
+        <Divider style={{ width: "80%" }} />
+        <div style={{ marginTop: "2%", display: "flex", flexDirection: "row" }}>
+          {reviewCards(userInfo.send)}
+        </div>
       </div>
-      
     </>
   );
 };

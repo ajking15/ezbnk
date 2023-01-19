@@ -3,7 +3,6 @@ import Navybar from "../common/components/navbar";
 
 const contact = () => {
     return (<>
-    <Navybar location='contact' />
     
     <div style={{display: 'flex', marginLeft: '30%', marginTop:  '5%', flexDirection: 'column', width: '40%'}}>
     <Text h1>Contact Us</Text>
